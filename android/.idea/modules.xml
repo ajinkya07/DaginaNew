@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Dagina.iml" filepath="$PROJECT_DIR$/.idea/modules/Dagina.iml" group="Dagina" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Dagina/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1103737441/react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/1103737441/react-native-community_async-storage.iml" group="Dagina/react-native-community_async-storage" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/908268780/react-native-community_checkbox.iml" filepath="$PROJECT_DIR$/.idea/modules/908268780/react-native-community_checkbox.iml" group="Dagina/react-native-community_checkbox" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-533497011/react-native-community_clipboard.iml" filepath="$PROJECT_DIR$/.idea/modules/-533497011/react-native-community_clipboard.iml" group="Dagina/react-native-community_clipboard" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/370283570/react-native-community_datetimepicker.iml" filepath="$PROJECT_DIR$/.idea/modules/370283570/react-native-community_datetimepicker.iml" group="Dagina/react-native-community_datetimepicker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-219007586/react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/.idea/modules/-219007586/react-native-community_masked-view.iml" group="Dagina/react-native-community_masked-view" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1360575596/react-native-community_toolbar-android.iml" filepath="$PROJECT_DIR$/.idea/modules/-1360575596/react-native-community_toolbar-android.iml" group="Dagina/react-native-community_toolbar-android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1014405463/react-native-fast-image.iml" filepath="$PROJECT_DIR$/.idea/modules/1014405463/react-native-fast-image.iml" group="Dagina/react-native-fast-image" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/893679132/react-native-firebase_app.iml" filepath="$PROJECT_DIR$/.idea/modules/893679132/react-native-firebase_app.iml" group="Dagina/react-native-firebase_app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/385335231/react-native-firebase_messaging.iml" filepath="$PROJECT_DIR$/.idea/modules/385335231/react-native-firebase_messaging.iml" group="Dagina/react-native-firebase_messaging" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1931314425/react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1931314425/react-native-gesture-handler.iml" group="Dagina/react-native-gesture-handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1812284564/react-native-image-crop-picker.iml" filepath="$PROJECT_DIR$/.idea/modules/-1812284564/react-native-image-crop-picker.iml" group="Dagina/react-native-image-crop-picker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/223395377/react-native-push-notification.iml" filepath="$PROJECT_DIR$/.idea/modules/223395377/react-native-push-notification.iml" group="Dagina/react-native-push-notification" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1671159421/react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-1671159421/react-native-reanimated.iml" group="Dagina/react-native-reanimated" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1218659106/react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/1218659106/react-native-safe-area-context.iml" group="Dagina/react-native-safe-area-context" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-543177286/react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/-543177286/react-native-screens.iml" group="Dagina/react-native-screens" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-382089006/react-native-share.iml" filepath="$PROJECT_DIR$/.idea/modules/-382089006/react-native-share.iml" group="Dagina/react-native-share" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1587437179/react-native-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/-1587437179/react-native-splash-screen.iml" group="Dagina/react-native-splash-screen" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1269146243/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-1269146243/react-native-vector-icons.iml" group="Dagina/react-native-vector-icons" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1284234708/react-native-webview.iml" filepath="$PROJECT_DIR$/.idea/modules/-1284234708/react-native-webview.iml" group="Dagina/react-native-webview" />
+    </modules>
+  </component>
+</project>

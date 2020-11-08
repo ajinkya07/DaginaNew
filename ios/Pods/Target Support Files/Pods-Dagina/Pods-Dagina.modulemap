@@ -1,0 +1,6 @@
+module Pods_Dagina {
+  umbrella header "Pods-Dagina-umbrella.h"
+
+  export *
+  module * { export * }
+}

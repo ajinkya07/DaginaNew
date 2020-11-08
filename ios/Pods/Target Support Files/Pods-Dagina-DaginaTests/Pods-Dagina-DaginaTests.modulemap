@@ -1,0 +1,6 @@
+module Pods_Dagina_DaginaTests {
+  umbrella header "Pods-Dagina-DaginaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
