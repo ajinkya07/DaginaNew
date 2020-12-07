@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/ajinkya/Desktop/Dagina/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+            "outputFile": "/Users/ajinkya/Desktop/DaginaNew/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-w360dp-port-v13/values-w360dp-port-v13.xml",
             "map": [
                 {
                     "source": "/Users/ajinkya/.gradle/caches/transforms-2/files-2.1/0de090eb085e2927f79d80e53e48fe4a/material-1.1.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",

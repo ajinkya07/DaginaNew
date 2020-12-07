@@ -752,18 +752,14 @@ class SearchProductGrid extends Component {
     let imageUrl = urls.imageUrl + 'public/backend/product_images/zoom_image/'
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#f3fcf9' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <_CustomHeader
           Title={`(${gridData.length.toString()})` + ' ' + `${!fromCodeSearch ? 'Advanced Search' : ' Search By Code'}`}
           // Subtitle={ `(${(gridData.length).toString()})`}
           RightBtnIcon1={require('../../../assets/image/BlueIcons/Search-White.png')}
-          RightBtnIcon2={require('../../../assets/image/BlueIcons/Notification-White.png')}
-          RightBtnPressOne={() =>
-            this.props.navigation.navigate('SearchScreen')
-          }
-          RightBtnPressTwo={() =>
-            this.props.navigation.navigate('Notification')
-          }
+          RightBtnIcon2={require('../../../assets/shopping-cart.png')}
+          RightBtnPressOne={() => this.props.navigation.navigate('SearchScreen')}
+          RightBtnPressTwo={() => this.props.navigation.navigate('CartContainer', { fromProductGrid: true })}
           rightIconHeight2={hp(3.5)}
           LeftBtnPress={() => this.props.navigation.goBack()}
           backgroundColor="#19af81"

@@ -64,6 +64,26 @@ export default {
     justifyContent: 'center',
     width: wp(46),
   },
+
+  gridItemDesignTwo: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+
+  gridImage2: {
+    height: hp(40),
+    // width: wp(45),
+    width: null,
+    // top: 1,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+
   gridImage: {
     height: hp(18),
     width: null,
@@ -92,6 +112,19 @@ export default {
     borderTopColor: '#d7d7d7',
     borderWidth: 0.4,
     width: wp(40),
+  },
+  borderTwo: {
+    marginTop: hp(0.8),
+    borderTopColor: '#d7d7d7',
+    borderWidth: 0.4,
+    width: '95%',
+  },
+  iconViewTwo: {
+    width: '100%',
+    marginTop: hp(1),
+    marginBottom: hp(1),
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
   iconView: {
     width: wp(48),

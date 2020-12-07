@@ -1609,6 +1609,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable redbox_top_border_background
 drawable src_assets_gif_nodata
+drawable src_assets_grid3
 drawable src_assets_image_account
 drawable src_assets_image_account_about
 drawable src_assets_image_account_account
@@ -1683,6 +1684,8 @@ drawable src_assets_image_tabs_profile_lightgrey
 drawable src_assets_image_tick
 drawable src_assets_image_uparrow
 drawable src_assets_image_user
+drawable src_assets_leftarrow
+drawable src_assets_shoppingcart
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light

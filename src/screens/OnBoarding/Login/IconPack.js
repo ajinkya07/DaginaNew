@@ -1,5 +1,5 @@
 export default {
-  LOGIN_BG: require('../../../assets/image/backg1.jpg'),
+  LOGIN_BG: require('../../../assets/image/backg1.png'),
   MOBILE_LOGO: require('../../../assets/image/BlueIcons/Mobile.png'),
   KEY_LOGO: require('../../../assets/image/Key.png'),
   HIDE: require('../../../assets/image/LoginIcons/hide.png'),

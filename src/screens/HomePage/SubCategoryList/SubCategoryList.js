@@ -86,8 +86,8 @@ export default class SubCategoryList extends Component {
     render() {
         const { subcategoryData } = this.state
         return (
-            <SafeAreaView style={{ flex: 1, backgroundColor: '#f3fcf9' }}>
-                <_CustomHeader
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+                {/* <_CustomHeader
                     Title={'Sub Category'}
                     //  RightBtnIcon1={require('../../../assets/image/BlueIcons/Search.png')}
                     RightBtnIcon2={require('../../../assets/image/BlueIcons/Notification-White.png')}
@@ -95,7 +95,17 @@ export default class SubCategoryList extends Component {
                     //RightBtnPressOne={()=> this.props.navigation.navigate('SearchScreen')}
                     RightBtnPressTwo={() => this.props.navigation.navigate('Notification')}
                     rightIconHeight2={hp(3.5)}
+                    // LeftBtnPress={() => this.props.navigation.goBack()}
+                    backgroundColor={color.green}
+                /> */}
+                <_CustomHeader
+                    Title={'Sub Category'}
+                    RightBtnIcon2={require('../../../assets/shopping-cart.png')}
+                    RightBtnIcon1={require('../../../assets/image/BlueIcons/Notification-White.png')}
                     LeftBtnPress={() => this.props.navigation.goBack()}
+                    RightBtnPressTwo={() => this.props.navigation.navigate('CartContainer', { fromProductGrid: true })}
+                    RightBtnPressOne={() => this.props.navigation.navigate('Notification')}
+                    rightIconHeight2={hp(3.5)}
                     backgroundColor={color.green}
                 />
 

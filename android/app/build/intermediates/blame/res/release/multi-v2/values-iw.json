@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/ajinkya/Desktop/Dagina/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-iw/values-iw.xml",
+            "outputFile": "/Users/ajinkya/Desktop/DaginaNew/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-iw/values-iw.xml",
             "map": [
+                {
+                    "source": "/Users/ajinkya/.gradle/caches/transforms-2/files-2.1/25526fd3fea3943ab02b7586e60fe407/jetified-firebase-messaging-21.0.0/res/values-iw/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "207",
+                        "endColumns": "99",
+                        "endOffsets": "306"
+                    },
+                    "to": {
+                        "startLines": "47",
+                        "startColumns": "4",
+                        "startOffsets": "5320",
+                        "endColumns": "103",
+                        "endOffsets": "5419"
+                    }
+                },
                 {
                     "source": "/Users/ajinkya/.gradle/caches/transforms-2/files-2.1/9a4658afade2e57b9a640b6674c28496/core-1.1.0/res/values-iw/values-iw.xml",
                     "from": {
@@ -55,7 +72,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ajinkya/.gradle/caches/transforms-2/files-2.1/8c662b838ce136e8ea8c3b7f8b8ff83b/jetified-play-services-basement-17.1.1/res/values-iw/values.xml",
+                    "source": "/Users/ajinkya/.gradle/caches/transforms-2/files-2.1/ce6d822654544029fe26194f50925c8b/jetified-play-services-basement-17.1.1/res/values-iw/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -69,23 +86,6 @@
                         "startOffsets": "3884",
                         "endColumns": "176",
                         "endOffsets": "4056"
-                    }
-                },
-                {
-                    "source": "/Users/ajinkya/.gradle/caches/transforms-2/files-2.1/02d36c07471a5fa98455500eb7d8f35d/jetified-firebase-messaging-21.0.0/res/values-iw/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "207",
-                        "endColumns": "99",
-                        "endOffsets": "306"
-                    },
-                    "to": {
-                        "startLines": "47",
-                        "startColumns": "4",
-                        "startOffsets": "5320",
-                        "endColumns": "103",
-                        "endOffsets": "5419"
                     }
                 }
             ]

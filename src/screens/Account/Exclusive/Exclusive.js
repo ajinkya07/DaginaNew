@@ -20,7 +20,7 @@ import {
 import { connect } from 'react-redux';
 import { Toast } from 'native-base';
 import { getExclusiveList } from '@exclusive/ExclusiveAction';
-import {color} from '@values/colors';
+import { color } from '@values/colors';
 
 
 
@@ -76,7 +76,7 @@ class Exclusive extends Component {
         }
     }
 
-    
+
     noDataFound = msg => {
         return (
             <View
@@ -99,23 +99,23 @@ class Exclusive extends Component {
 
     renderLoader = () => {
         return (
-          <View
-            style={{
-              position: 'absolute',
-              height: hp(100),
-              width: wp(100),
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <ActivityIndicator size="large" color={color.brandColor} />
-          </View>
+            <View
+                style={{
+                    position: 'absolute',
+                    height: hp(100),
+                    width: wp(100),
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                <ActivityIndicator size="large" color={color.brandColor} />
+            </View>
         );
-      };
+    };
 
-      
+
 
     render() {
-        const { exclusiveData,isFetching } = this.props
+        const { exclusiveData, isFetching } = this.props
 
 
         return (
@@ -140,7 +140,7 @@ class Exclusive extends Component {
                             renderItem={({ item }) => (
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate('ProductGrid',
-                                     { gridData: item,fromExclusive:true, collectionName:item.collection_name })}>
+                                        { gridData: item, fromExclusive: true, collectionName: item.collection_name })}>
                                     <View style={styles.row}>
                                         <View style={styles.countContainer}>
                                             <Text style={styles.collectionCount}>{item.product_count}</Text>
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     },
     flex: {
         flex: 1,
-        backgroundColor: '#f3fcf9',
+        backgroundColor: '#fff',
     },
     collectionCount: {
         ...Theme.ffLatoBold20,

@@ -704,7 +704,7 @@ class HomePage extends Component {
         {index % 4 == 3 &&
           <View style={{
             backgroundColor: 'white',
-            height: hp(17), width: wp(63),
+            height: hp(18), width: wp(63),
             marginRight: hp(1)
           }}>
             <TouchableOpacity
@@ -712,7 +712,7 @@ class HomePage extends Component {
               activeOpacity={0.7}>
               <Image
                 resizeMode={'cover'}
-                style={{ height: hp(20), width: wp(63) }}
+                style={{ height: hp(18), width: wp(63) }}
                 defaultSource={IconPack.APP_LOGO}
                 source={{ uri: baseUrl + item.image_name }}
               />
@@ -732,16 +732,16 @@ class HomePage extends Component {
         }
 
         {index % 4 == 0 &&
-          <TouchableOpacity
-            onPress={() => this.getProductGridOrNot(item)}
-            activeOpacity={0.7}>
-            <View style={{
-              backgroundColor: 'white',
-              marginTop: -hp(18),
-              marginLeft: wp(64),
-              height: hp(18),
-              width: wp(35),
-            }}>
+          <View style={{
+            backgroundColor: 'white',
+            marginTop: -hp(18),
+            marginLeft: wp(64),
+            height: hp(18),
+            width: wp(35),
+          }}>
+            <TouchableOpacity
+              onPress={() => this.getProductGridOrNot(item)}
+            >
               <Image
                 resizeMode={'cover'}
                 style={{ height: hp(18), width: wp(35) }}
@@ -760,8 +760,8 @@ class HomePage extends Component {
                 }}>
                 {item.col_name}
               </_Text>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
         }
 
 
@@ -1118,7 +1118,7 @@ class HomePage extends Component {
           {userStatus.status == 'Active' &&
             <View>
               <View style={{
-                marginTop: hp(3), marginBottom: -10, borderColor: '#DDDDDD',
+                marginTop: hp(2), marginBottom: -10, borderColor: '#DDDDDD',
                 height: hp(28), width: '100%',
               }}>
                 <Image

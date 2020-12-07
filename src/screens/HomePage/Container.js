@@ -134,7 +134,7 @@ class Container extends Component {
 
     global.headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
 
-    console.log("allParameterData", allParameterData);
+    console.log("headerColor", headerColor);
 
     return (
       <SafeAreaView style={safeAreaView}>

@@ -155,7 +155,6 @@ class Register extends React.Component {
       isEmail,
     } = this.state;
 
-    console.log("organisation", organisation);
 
     let error = '';
     try {
@@ -197,7 +196,6 @@ class Register extends React.Component {
         this.props.OTPregisterRequest(data);
       }
     } catch (err) {
-      console.log('err', err.toString());
       this.showToast(error, 'danger');
     }
   };
@@ -272,7 +270,7 @@ class Register extends React.Component {
                     value={fullName ? fullName : null}
                     type="fullName"
                     inputKey="fullName"
-                    maxLength={25}
+                    maxLength={50}
                     minLength={3}
                     onChangeText={this.onInputChanged}
                     placeholder="Full name"
@@ -300,7 +298,7 @@ class Register extends React.Component {
                     value={emailId ? emailId : null}
                     type="emailId"
                     inputKey="emailId"
-                    maxLength={35}
+                    maxLength={100}
                     minLength={3}
                     onChangeText={this.onInputChanged}
                     placeholder="Email"
@@ -315,7 +313,7 @@ class Register extends React.Component {
                     type="organisation"
                     inputKey="organisation"
                     placeholder="Organisation"
-                    maxLength={25}
+                    maxLength={100}
                     minLength={3}
                     onChangeText={this.onInputChanged}
                     returnKeyType="next"
@@ -328,8 +326,8 @@ class Register extends React.Component {
                     value={password ? password : null}
                     type="password"
                     inputKey="password"
-                    maxLength={10}
-                    minLength={6}
+                    maxLength={50}
+                    minLength={4}
                     onChangeText={this.onInputChanged}
                     placeholder="Password"
                     returnKeyType="done"

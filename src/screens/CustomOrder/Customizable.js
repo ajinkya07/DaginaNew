@@ -400,11 +400,12 @@ class Customizable extends Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
 
-        <Container
-          style={{
-            flex: 1,
-            backgroundColor: '#FFFFFF',
-          }}>
+
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.select({ ios: 110, android: -140 })}
+          style={{ flex: 1 }}
+        >
 
           <ScrollView showsVerticalScrollIndicator={true} bounces={false}>
 
@@ -413,7 +414,7 @@ class Customizable extends Component {
                 alignItems: 'center',
                 justifyContent: 'center',
                 flex: 1,
-                backgroundColor: '#f3fcf9',
+                backgroundColor: '#fff',
               }}>
               {this.state.imageUrl == '' && (
                 <Image
@@ -439,7 +440,7 @@ class Customizable extends Component {
 
             <View
               style={{
-                backgroundColor: '#f3fcf9',
+                backgroundColor: '#fff',
                 flex: 2,
               }}>
               <View
@@ -596,21 +597,20 @@ class Customizable extends Component {
             </View>
           </ScrollView>
 
-          <View style={{ position: 'absolute', top: height / 3.8, right: wp(6) }}>
-            <TouchableOpacity onPress={() => this.showActionSheet()}>
-              <Image
-                style={{
-                  resizeMode: 'cover',
-                  width: 50,
-                  height: 50,
-                }}
-                source={IconPack.PLUS_ICON}
-              />
-            </TouchableOpacity>
-          </View>
+        </KeyboardAvoidingView>
 
-
-        </Container>
+        <View style={{ position: 'absolute', top: height / 3.8, right: wp(6) }}>
+          <TouchableOpacity onPress={() => this.showActionSheet()}>
+            <Image
+              style={{
+                resizeMode: 'cover',
+                width: 50,
+                height: 50,
+              }}
+              source={IconPack.PLUS_ICON}
+            />
+          </TouchableOpacity>
+        </View>
 
 
         <TouchableOpacity onPress={() => this.submitCustomOrder()}>

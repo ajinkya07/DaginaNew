@@ -26,41 +26,53 @@ export default class _CustomHeader extends Component {
           hasTabs
           style={{
             width: wp(100),
-            height: hp(6),
-            marginBottom: 8,
+            height: hp(7.4),
+            paddingVertical: Platform.OS === 'ios' ? hp(2) : 2,
             backgroundColor: headerTheme ? '#' + headerTheme : this.props.backgroundColor
 
           }}>
-          <Left style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-            <Button transparent onPress={() => this.props.LeftBtnPress()}>
+          <Left style={{ flex: 0.25 }}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.LeftBtnPress();
+              }}
+              hitSlop={{ top: 15, left: 15, right: 120, bottom: 15 }}>
               <Image
                 source={
                   this.props.LeftBtnIcon
                     ? this.props.LeftBtnIcon
-                    : require('../../assets/image/back.png')
+                    : require('../../assets/left-arrow.png')
                 }
                 style={{
-                  left: -5, top: 1,
-                  height: this.props.height ? this.props.height : hp(2.5),
-                  width: this.props.width ? this.props.width : hp(2.5),
+                  top: 2,
+                  height: this.props.height ? this.props.height : hp(3.5),
+                  width: this.props.width ? this.props.width : hp(3.5),
                 }}
               />
-            </Button>
+            </TouchableOpacity>
+          </Left>
 
-            {this.props.Title && (
+
+          {this.props.Title && (
+            <Body style={{ flex: 1 }}>
               <Title
                 style={{
                   color: '#ffffff',
                   fontSize: hp(2.6),
                   fontFamily: 'Lato-Bold',
                   letterSpacing: 1,
-
                 }}>
                 {this.props.Title ? this.props.Title : ''}
               </Title>
-            )}
+              {this.props.Subtitle && (
+                <Subtitle style={{ color: color.black, fontSize: hp(1.5) }}>
+                  {this.props.Subtitle ? this.props.Subtitle : ''}
+                </Subtitle>
+              )}
+            </Body>
+          )}
 
-          </Left>
+
           {/* 
           {this.props.Title && (
             <Body style={{ flex: 1 }}>
@@ -84,7 +96,7 @@ export default class _CustomHeader extends Component {
           <Right style={{ flex: 0.65 }}>
             {this.props.RightBtnIcon1 && (
               <Button
-                // style={{ marginTop: 8, }}
+                style={{ marginTop: 8, }}
                 transparent
                 onPress={() => this.props.RightBtnPressOne()}>
                 <Image
@@ -102,7 +114,7 @@ export default class _CustomHeader extends Component {
             )}
             {this.props.RightBtnIcon2 && (
               <Button
-                // style={{ marginTop: 8 }}
+                style={{ top: 1 }}
                 transparent
                 onPress={() => this.props.RightBtnPressTwo()}>
                 <Image

@@ -178,7 +178,7 @@ class CustomOrder extends Component {
 
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#f3fcf9' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <_CustomHeader
           Title='Custom Order History'
           // RightBtnIcon1={require('../../../assets/image/BlueIcons/Search.png')}

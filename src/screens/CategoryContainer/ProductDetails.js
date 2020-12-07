@@ -519,18 +519,19 @@ class ProductDetails extends React.Component {
               androidStatusBarColor="default">
               <View style={styles.textViewStyle}>
                 <TouchableOpacity
+                  hitSlop={{ top: 15, left: 15, right: 20, bottom: 15 }}
                   onPress={() => this.props.navigation.goBack()}>
                   <Image
                     source={require('../../assets/image/Account/back_button.png')}
                     style={{
                       marginLeft: 10,
-                      height: hp(2.2),
-                      width: hp(2.2),
+                      height: hp(3),
+                      width: hp(3),
                     }}
                   />
                 </TouchableOpacity>
                 <Animated.Text
-                  style={[styles.headerTextStyle, { opacity: headerOpacity }]}>
+                  style={[styles.headerTextStyle, { color: '#303030', opacity: headerOpacity }]}>
                   {productDetailsStateData.product_name}
                 </Animated.Text>
               </View>
@@ -556,7 +557,7 @@ class ProductDetails extends React.Component {
                       <View style={{ width: wp(73) }}>
                         <Text
                           style={{
-                            color: '#8a8a8a',
+                            color: '#fff',
                             ...Theme.ffLatoRegular18,
                             letterSpacing: 0.8,
                           }}>
@@ -899,7 +900,7 @@ const styles = StyleSheet.create({
   },
   topBorderStyle: {
     borderBottomColor: '#d7d7d7',
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0.8,
     marginHorizontal: 10,
   },
   quantityContainer: {
@@ -915,8 +916,8 @@ const styles = StyleSheet.create({
     marginTop: hp(0.5),
   },
   decrementCount: {
-    width: hp(5),
-    height: hp(5),
+    width: hp(4),
+    height: hp(4),
     resizeMode: 'contain',
   },
   countTextInput: {
@@ -929,8 +930,8 @@ const styles = StyleSheet.create({
     color: color.brandColor,
   },
   incrementCountIcon: {
-    width: hp(5),
-    height: hp(5),
+    width: hp(4),
+    height: hp(4),
     resizeMode: 'contain',
   },
   remarkContainer: {
@@ -946,16 +947,16 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   remarksInput: {
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0.8,
     height: 40,
     marginHorizontal: 15,
     width: wp(78),
     ...Theme.ffLatoRegular16,
     color: '#000000',
-    borderBottomColor: color.brandColor,
+    borderBottomColor: '#d7d7d7',
   },
   descriptionContainer: {
-    backgroundColor: '#f3fcf9',
+    backgroundColor: '#fff',
     borderTopLeftRadius: 18,
     borderTopRightRadius: 18,
     marginTop: hp(1),

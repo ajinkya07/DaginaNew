@@ -107,6 +107,7 @@ class ProductGrid extends Component {
       filterData: [],
 
       isSelectPressed: false,
+      isGridPressed: false,
       selectedItem: '',
       selectedProducts: [],
 
@@ -1011,6 +1012,191 @@ class ProductGrid extends Component {
   };
 
 
+
+  gridViewFull = item => {
+    const {
+      gridItemDesignTwo,
+      latestTextViewTwo,
+      latestTextViewThree,
+      gridImage, gridImage2,
+      borderTwo,
+      iconViewTwo,
+    } = ProductGridStyle;
+
+    let url = urls.imageUrl + 'public/backend/product_images/zoom_image/';
+
+    const { isSelectPressed, selectedItem, selectedProducts } = this.state;
+
+    return (
+      <TouchableOpacity
+        onPress={() =>
+          isSelectPressed
+            ? item.quantity > 0
+              ? this.showAlreadyToast()
+              : this.selectProduct(item, item.product_inventory_id)
+            : this.props.navigation.navigate('ProductDetails', {
+              productItemDetails: item,
+            })
+        }>
+        <View
+          style={{
+            backgroundColor: color.white,
+            // height: Platform.OS === 'android' ? hp(34) : hp(31),
+            width: '96%',
+            marginHorizontal: hp(1),
+            borderRadius: 15,
+            shadowColor: '#000',
+            shadowOffset: { width: 0.5, height: 0.5 },
+            shadowOpacity: 0.25,
+            shadowRadius: 2,
+            elevation: 2.2,
+          }}
+          activeOpacity={1}>
+          <View style={gridItemDesignTwo}>
+            <TouchableOpacity
+              onPress={() =>
+                isSelectPressed
+                  ? item.quantity > 0
+                    ? this.showAlreadyToast()
+                    : this.selectProduct(item, item.product_inventory_id)
+                  : this.props.navigation.navigate('ProductDetails', {
+                    productItemDetails: item,
+                  })
+              }
+              onLongPress={() => this.showProductImageModal(item)}
+              style={{ width: '100%' }}>
+              <Image
+                resizeMode='cover'
+                style={gridImage2}
+                defaultSource={IconPack.APP_LOGO}
+                source={{ uri: url + item.image_name }}
+              />
+
+            </TouchableOpacity>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: '100%',
+                flex: 1,
+              }}>
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: 'flex-start',
+                  marginLeft: 55,
+                }}>
+                {item.key.map((key, i) => {
+                  return (
+                    <_Text
+                      numberOfLines={1}
+                      fsSmall
+                      textColor={'#000000'}
+                      style={{ ...Theme.ffLatoRegular15 }}>
+                      {key.replace('_', ' ')}
+                    </_Text>
+                  );
+                })}
+              </View>
+
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: 'flex-start',
+                  marginLeft: 55,
+                }}>
+                {item.value.map((value, j) => {
+                  return (
+                    <_Text
+                      numberOfLines={1}
+                      fsPrimary
+                      //textColor={color.brandColor}
+                      textColor={'#000000'}
+                      style={{ ...Theme.ffLatoRegular15 }}>
+                      {value ? value : '-'}
+                    </_Text>
+                  );
+                })}
+              </View>
+            </View>
+
+            <View style={borderTwo}></View>
+
+            {item.quantity == 0 && (
+              <View style={iconViewTwo}>
+                <TouchableOpacity
+                  onPress={() =>
+                    isSelectPressed
+                      ? this.selectProduct(item, item.product_inventory_id)
+                      : this.addProductToWishlist(item)
+                  }>
+                  <Image
+                    source={require('../../../assets/image/Heart.png')}
+                    style={{ height: hp(3.1), width: hp(3), marginTop: 2 }}
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    isSelectPressed
+                      ? this.selectProduct(item, item.product_inventory_id)
+                      : this.addProductToCart(item)
+                  }>
+                  <Image
+                    source={require('../../../assets/image/cART.png')}
+                    style={{ height: hp(3.1), width: hp(3), marginTop: 2 }}
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+              </View>
+            )}
+
+            {item.quantity > 0 && (
+              <View style={iconViewTwo}>
+                <TouchableOpacity
+                  onPress={() =>
+                    isSelectPressed
+                      ? this.showAlreadyToast()
+                      : this.removeProductFromCartByOne(item)
+                  }>
+                  <Image
+                    source={require('../../../assets/image/MinusBlock.png')}
+                    style={{ height: hp(3), width: hp(3) }}
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+                <_Text
+                  numberOfLines={1}
+                  textColor={color.brandColor}
+                  fsMedium
+                  fwHeading>
+                  {item.quantity >= 1 ? item.quantity : item.in_cart}
+                </_Text>
+
+                <TouchableOpacity
+                  onPress={() =>
+                    isSelectPressed
+                      ? this.showAlreadyToast()
+                      : this.addProductToCartPlusOne(item)
+                  }>
+                  <Image
+                    source={require('../../../assets/image/PlusBlock.png')}
+                    style={{ height: hp(3), width: hp(3) }}
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+              </View>
+            )}
+          </View>
+
+
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+
   selectProduct = (data, id) => {
     const { selectedItem, selectedProducts, gridData } = this.state
 
@@ -1092,7 +1278,6 @@ class ProductGrid extends Component {
           item => selectedProductIds[i] == item.product_inventory_id
         );
 
-        console.warn("dd", dd);
         this.state.gridData[dd].isSelect = false;
 
       }
@@ -1246,7 +1431,7 @@ class ProductGrid extends Component {
         }}>
         <Image
           source={require('../../../assets/gif/noData.gif')}
-          style={{ height: hp(20), width: hp(20) }}
+          style={{ height: hp(20), width: hp(20), alignSelf: 'center', }}
           resizeMode="cover"
         />
         <_Text style={{ top: 10, fontSize: 16, texAlign: 'center' }}>{message}</_Text>
@@ -1504,7 +1689,16 @@ class ProductGrid extends Component {
 
   toggleSelect = () => {
     this.setState({
-      isSelectPressed: !this.state.isSelectPressed
+      isSelectPressed: !this.state.isSelectPressed,
+      isGridPressed: false
+
+    })
+  }
+
+  toggleGrid = () => {
+    this.setState({
+      isGridPressed: !this.state.isGridPressed,
+      isSelectPressedNormal: false
     })
   }
 
@@ -1557,7 +1751,7 @@ class ProductGrid extends Component {
       sortList,
       isGrossWtSelected,
       isProductImageModalVisibel,
-      collectionName,
+      collectionName, isGridPressed,
       isSelectPressed, selectedProducts, selectedItem
     } = this.state;
 
@@ -1569,20 +1763,15 @@ class ProductGrid extends Component {
 
     return (
 
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#f3fcf9' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
         <_CustomHeader
           Title={
             `(${gridData.length.toString()})` + ' ' + `${categoryData.col_name != undefined ? categoryData.col_name : collectionName}`
           }
-
           RightBtnIcon1={require('../../../assets/image/BlueIcons/Search-White.png')}
-          RightBtnIcon2={require('../../../assets/image/BlueIcons/Notification-White.png')}
-          RightBtnPressOne={() =>
-            this.props.navigation.navigate('SearchScreen')
-          }
-          RightBtnPressTwo={() =>
-            this.props.navigation.navigate('Notification')
-          }
+          RightBtnIcon2={require('../../../assets/shopping-cart.png')}
+          RightBtnPressOne={() => this.props.navigation.navigate('SearchScreen')}
+          RightBtnPressTwo={() => this.props.navigation.navigate('CartContainer', { fromProductGrid: true })}
           rightIconHeight2={hp(3.5)}
           LeftBtnPress={() => this.props.navigation.goBack()}
           backgroundColor="#19af81"
@@ -1604,7 +1793,7 @@ class ProductGrid extends Component {
               onPress={() => this.openSortByModal()}>
               <View
                 style={{
-                  width: wp(33),
+                  width: wp(25),
                   flex: 1,
                   flexDirection: 'row',
                   justifyContent: 'center',
@@ -1631,7 +1820,7 @@ class ProductGrid extends Component {
               onPress={() => this.toggleFilterModal()}>
               <View
                 style={{
-                  width: wp(33),
+                  width: wp(25),
                   flex: 1,
                   flexDirection: 'row',
                   justifyContent: 'center',
@@ -1658,7 +1847,7 @@ class ProductGrid extends Component {
               onPress={() => this.addSelectedProductCart()}>
               <View
                 style={{
-                  width: wp(33),
+                  width: isSelectPressed ? wp(33) : wp(25),
                   flex: 1,
                   flexDirection: 'row',
                   justifyContent: 'center',
@@ -1685,7 +1874,7 @@ class ProductGrid extends Component {
               onPress={() => this.addSelectedProductWishList()}>
               <View
                 style={{
-                  width: wp(33),
+                  width: isSelectPressed ? wp(33) : wp(25),
                   flex: 1,
                   flexDirection: 'row',
                   justifyContent: 'center',
@@ -1712,7 +1901,7 @@ class ProductGrid extends Component {
             disabled={!this.state.gridData || this.state.gridData.length === 0}>
             <View
               style={{
-                width: wp(33),
+                width: isSelectPressed ? wp(33) : wp(25),
                 flex: 1,
                 flexDirection: 'row',
                 justifyContent: 'center',
@@ -1733,10 +1922,37 @@ class ProductGrid extends Component {
             </View>
           </TouchableOpacity>
 
+          <TouchableOpacity
+            onPress={() => this.toggleGrid()}
+            disabled={!this.state.gridData || this.state.gridData.length === 0}>
+            <View
+              style={{
+                width: isSelectPressed ? wp(33) : wp(25),
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: isGridPressed ? 'gold' : '#FFFFFF'
+              }}>
+              <Image
+                style={{ height: hp(2.8), width: hp(2.8), marginRight: hp(2) }}
+                source={require('../../../assets/grid-3.png')}
+              />
+              <_Text
+                fsHeading
+                bold
+                textColor={headerTheme ? '#' + headerTheme : '#19af81'}
+                style={{ ...Theme.ffLatoRegular14 }}>
+                GRID
+              </_Text>
+            </View>
+          </TouchableOpacity>
+
         </View>
 
-        {gridData && (
+        {gridData && !isGridPressed && (
           <FlatList
+            key={'_'}
             data={gridData}
             showsHorizontalScrollIndicator={true}
             showsVerticalScrollIndicator={false}
@@ -1746,11 +1962,30 @@ class ProductGrid extends Component {
               </View>
             )}
             numColumns={2}
-            keyExtractor={(item, index) => item.product_inventory_id.toString()}
+            keyExtractor={(item, index) => '_' + item.product_inventory_id.toString()}
             style={{ marginTop: hp(1) }}
             onEndReachedThreshold={0.4}
             onEndReached={() => this.LoadMoreData()}
             ListEmptyComponent={() => this.showNoDataFound(this.props.errorMsgGrid)}
+          />
+        )}
+
+        {gridData && isGridPressed && (
+          <FlatList
+            key={'#'}
+            data={gridData}
+            showsHorizontalScrollIndicator={true}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => (
+              <View style={{ marginBottom: hp(1), marginTop: hp(1) }}>
+                { this.gridViewFull(item)}
+              </View>
+            )}
+            numColumns={1}
+            keyExtractor={item => '#' + item.product_inventory_id.toString()}
+            style={{ marginTop: hp(1) }}
+            onEndReachedThreshold={0.4}
+            onEndReached={() => this.LoadMoreData()}
           />
         )}
 
@@ -2333,7 +2568,7 @@ class RangeSlider extends React.Component {
             <MultiSlider
               values={[values[0], values[1]]}
               sliderLength={wp(60)}
-              onValuesChange={this.multiSliderValuesChange}
+              onValuesChange={() => this.multiSliderValuesChange()}
               min={parseFloat(values[0])}
               max={parseFloat(values[1])}
               step={1}
@@ -2431,7 +2666,7 @@ class LengthSlider extends React.Component {
             <MultiSlider
               values={[values[0], values[1]]}
               sliderLength={wp(60)}
-              onValuesChange={this.multiSliderValuesChangeTwo}
+              onValuesChange={() => this.multiSliderValuesChangeTwo()}
               min={parseFloat(values[0])}
               max={parseFloat(values[1])}
               step={1}

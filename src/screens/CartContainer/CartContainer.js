@@ -152,10 +152,10 @@ const actionButtonRoundedStyle2 = StyleSheet.create({
 class CartContainer extends Component {
   constructor(props) {
     super(props);
-    const from = this.props.route && this.props.route.params && this.props.route.params.fromProductReorder;
+    const from = this.props.route && this.props.route.params && this.props.route.params.fromProductGrid;
 
     this.state = {
-      fromReorder: from,
+      fromProductGrid: from,
       currentPage: 0,
       isToggle: false,
       isToogleTwo: false,
@@ -1308,7 +1308,7 @@ class CartContainer extends Component {
       isCartImageModalVisibel,
       isDateTimePickerVisible,
       imageToBeDisplayed,
-      weight, fromReorder,
+      weight, fromReorder, fromProductGrid,
       weightArr, isPlaceOrderModalVisible, isContinueModalVisible
     } = this.state;
 
@@ -1324,8 +1324,9 @@ class CartContainer extends Component {
 
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#f3fcf9' }}>
-        {fromReorder &&
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+
+        {fromProductGrid &&
           <_CustomHeader
             Title={this.state.currentPage === 0 ? 'Cart' : 'Wishlist'}
             LeftBtnPress={() => this.props.navigation.goBack()}
@@ -1334,11 +1335,11 @@ class CartContainer extends Component {
         }
         <Container>
           <Tabs
-            tabBarUnderlineStyle={{ backgroundColor: '#19af81' }}
+            tabBarUnderlineStyle={{ backgroundColor: '#303030' }}
             onChangeTab={({ i }) => this.setState({ currentPage: i })}>
             <Tab
               heading={
-                <TabHeading style={{ backgroundColor: '#f3fcf9' }}>
+                <TabHeading style={{ backgroundColor: '#fff' }}>
                   <Image
                     resizeMode="contain"
                     style={{ width: 22, height: 22 }}
@@ -1355,7 +1356,7 @@ class CartContainer extends Component {
 
             <Tab
               heading={
-                <TabHeading style={{ backgroundColor: '#f3fcf9' }}>
+                <TabHeading style={{ backgroundColor: '#fff' }}>
                   <Image
                     resizeMode="contain"
                     style={{ width: 22, height: 22 }}
