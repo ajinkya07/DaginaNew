@@ -270,7 +270,7 @@ class Register extends React.Component {
                     value={fullName ? fullName : null}
                     type="fullName"
                     inputKey="fullName"
-                    maxLength={50}
+                    maxLength={100}
                     minLength={3}
                     onChangeText={this.onInputChanged}
                     placeholder="Full name"

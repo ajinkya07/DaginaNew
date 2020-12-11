@@ -54,7 +54,7 @@ export function validatePassword(password) {
   if (password.length < 4) {
     return false
   }
-  if (password.length > 10) {
+  if (password.length > 50) {
     return false
   }
   else{

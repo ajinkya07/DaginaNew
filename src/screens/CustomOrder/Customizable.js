@@ -403,7 +403,7 @@ class Customizable extends Component {
 
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          keyboardVerticalOffset={Platform.select({ ios: 110, android: -140 })}
+          keyboardVerticalOffset={Platform.select({ ios: 120, android: -140 })}
           style={{ flex: 1 }}
         >
 
@@ -589,7 +589,7 @@ class Customizable extends Component {
                     <DateTimePicker
                       isVisible={isDateTimePickerVisible}
                       onConfirm={date => this.handleDatePicked(date)}
-                      onCancel={() => hideDateTimePicker()}
+                      onCancel={() => this.hideDateTimePicker()}
                     />
                   )}
                 </View>
