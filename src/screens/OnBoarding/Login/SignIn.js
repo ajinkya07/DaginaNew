@@ -112,6 +112,7 @@ class SignIn extends React.Component {
 
     if (this.state.successFcmVersion > prevState.successFcmVersion) {
       this.props.navigation.navigate('Container');
+      Keyboard.dismiss()
     }
 
     if (this.state.errorFcmVersion > prevState.errorFcmVersion) {
@@ -246,13 +247,13 @@ class SignIn extends React.Component {
                         textAlign: 'center', letterSpacing: 10,
                         fontSize: 28, color: '#FFFFFF',
                       }}>
-                        DAGINA
+                        {strings.appName}
                       </Text>
                       <Text style={{
                         fontFamily: 'Lato-Regular', letterSpacing: 3,
                         fontSize: 20, color: '#FFFFFF', textAlign: 'center'
                       }}>
-                        JEWELLERS
+                        {strings.appSubName}
                       </Text>
                     </View>
 

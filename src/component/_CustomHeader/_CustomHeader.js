@@ -26,7 +26,7 @@ export default class _CustomHeader extends Component {
           hasTabs
           style={{
             width: wp(100),
-            height: hp(7.4),
+            height: hp(7),
             paddingVertical: Platform.OS === 'ios' ? hp(2) : 2,
             backgroundColor: headerTheme ? '#' + headerTheme : this.props.backgroundColor
 

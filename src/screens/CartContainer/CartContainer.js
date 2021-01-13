@@ -63,17 +63,21 @@ var userId = '';
 
 const { width } = Dimensions.get('window');
 
-const ActionButtonRounded = ({ title, onButonPress, containerStyle }) => {
+const ActionButtonRounded = ({ title, onButonPress, containerStyle, color }) => {
   return (
     <TouchableOpacity
       onPress={() => {
         onButonPress();
       }}>
       <View
-        style={[
-          actionButtonRoundedStyle.mainContainerStyle,
-          containerStyle || null,
-        ]}>
+        style={{
+          backgroundColor: color ? '#' + color : '#303030',
+          height: 42,
+          width: 140,
+          justifyContent: 'center',
+          borderRadius: 40,
+          marginVertical: 5,
+        }}>
         <View style={actionButtonRoundedStyle.innerContainer}>
           <Text style={actionButtonRoundedStyle.titleStyle}>{title}</Text>
         </View>
@@ -84,7 +88,7 @@ const ActionButtonRounded = ({ title, onButonPress, containerStyle }) => {
 
 const actionButtonRoundedStyle = StyleSheet.create({
   mainContainerStyle: {
-    backgroundColor: color.green,
+    backgroundColor: '#303030',
     height: 42,
     width: width - 36,
     justifyContent: 'center',
@@ -106,17 +110,21 @@ const actionButtonRoundedStyle = StyleSheet.create({
   },
 });
 
-const ActionButtonRounded2 = ({ title, onButonPress, containerStyle }) => {
+const ActionButtonRounded2 = ({ title, onButonPress, containerStyle, color }) => {
   return (
     <TouchableOpacity
       onPress={() => {
         onButonPress();
       }}>
       <View
-        style={[
-          actionButtonRoundedStyle2.mainContainerStyle2,
-          containerStyle || null,
-        ]}>
+        style={{
+          backgroundColor: color ? '#' + color : '#303030',
+          height: 42,
+          width: 140,
+          justifyContent: 'center',
+          borderRadius: 40,
+          marginVertical: 5,
+        }}>
         <View style={actionButtonRoundedStyle2.innerContainer2}>
           <Text style={actionButtonRoundedStyle2.titleStyle2}>{title}</Text>
         </View>
@@ -125,9 +133,10 @@ const ActionButtonRounded2 = ({ title, onButonPress, containerStyle }) => {
   );
 };
 
+
 const actionButtonRoundedStyle2 = StyleSheet.create({
   mainContainerStyle2: {
-    backgroundColor: '#11255a',
+    backgroundColor: '#303030',
     height: 44,
     width: width - 60,
     justifyContent: 'center',
@@ -148,6 +157,10 @@ const actionButtonRoundedStyle2 = StyleSheet.create({
     fontWeight: '400',
   },
 });
+
+
+
+
 
 class CartContainer extends Component {
   constructor(props) {
@@ -771,6 +784,7 @@ class CartContainer extends Component {
     const { isToggle, openMoreDetailsIdwish } = this.state;
 
     let baseurl = urls.imageUrl + data.zoom_image;
+    const { wishlistData } = this.props
 
     return (
       <TouchableOpacity onPress={() => this.setToggleView(data)}>
@@ -807,32 +821,44 @@ class CartContainer extends Component {
         </View>
         {isToggle && openMoreDetailsIdwish === data.cart_wish_id ? (
           <>
+
             <View style={styles.tabCartMiddleContainer}>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>gross wt:</Text>
-                <Text style={styles.text}>{parseInt(data.values[0]).toFixed(2)}</Text>
+              <View style={{ flexDirection: 'column' }}>
+                {wishlistData[0].keys.map(
+                  (key, i) => {
+                    return (
+                      <Text
+                        style={{
+                          marginTop: 5,
+                          ...Theme.ffLatoRegular15,
+                          color: '#000000',
+                        }}>
+                        {key.replace('_', ' ')}
+                      </Text>
+                    );
+                  },
+                )}
               </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>net wt:</Text>
-                <Text style={styles.text}>{parseInt(data.values[1]).toFixed(2)}</Text>
+              <View style={{ flexDirection: 'column' }}>
+                {wishlistData[0].values.map(
+                  (value, j) => {
+                    return (
+                      <Text
+                        style={{
+                          marginTop: 5,
+                          ...Theme.ffLatoRegular15,
+                          color: '#000000',
+                          textAlign: 'right',
+                        }}>
+                        {value ? value : '-'}
+                      </Text>
+                    );
+                  },
+                )}
               </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>quantity:</Text>
-                <Text style={styles.text}>{data.values[2]}</Text>
-              </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>remarks: </Text>
-                <Text style={styles.text}> {data.values[3]}</Text>
-              </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>length:</Text>
-                <Text style={styles.text}>{data.values[4]}</Text>
-              </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>weight:</Text>
-                <Text style={styles.text}>{parseInt(data.values[5]).toFixed(2)}</Text>
-              </View>
+
             </View>
+
             <View style={styles.tabCartBottomContainer}>
               <TouchableOpacity onPress={() => this.moveFromwishlist(data)}>
                 <View style={styles.tabCartBottomImgView}>
@@ -994,7 +1020,9 @@ class CartContainer extends Component {
     const { isToogleTwo, openMoreDetailsIdCart } = this.state;
 
     let baseurl2 = urls.imageUrl + item.zoom_image;
+    const { cartData } = this.props
 
+    console.log("cartData=====", cartData);
     return (
       <TouchableOpacity onPress={() => this.setCartToggleView(item)}>
         <View style={styles.tabCartTopContainer}>
@@ -1031,31 +1059,45 @@ class CartContainer extends Component {
         {isToogleTwo && openMoreDetailsIdCart === item.cart_wish_id ? (
           <>
             <View style={styles.tabCartMiddleContainer}>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>gross wt:</Text>
-                <Text style={styles.text}>{parseInt(item.values[0]).toFixed(2)}</Text>
+
+              <View style={{ flexDirection: 'column' }}>
+                {cartData[0].keys.map(
+                  (key, i) => {
+                    return (
+                      <Text
+                        style={{
+                          marginTop: 5,
+                          ...Theme.ffLatoRegular15,
+                          color: '#000000',
+                        }}>
+                        {key.replace('_', ' ')}
+                      </Text>
+                    );
+                  },
+                )}
               </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>net wt:</Text>
-                <Text style={styles.text}>{parseInt(item.values[1]).toFixed(2)}</Text>
+              <View style={{ flexDirection: 'column' }}>
+                {cartData[0].values.map(
+                  (value, j) => {
+                    return (
+                      <Text
+                        style={{
+                          marginTop: 5,
+                          ...Theme.ffLatoRegular15,
+                          color: '#000000',
+                          textAlign: 'right',
+                        }}>
+                        {value ? value : '-'}
+                      </Text>
+                    );
+                  },
+                )}
               </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>quantity:</Text>
-                <Text style={styles.text}>{item.values[2]}</Text>
-              </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>remarks: </Text>
-                <Text style={styles.text}>{item.values[3]}</Text>
-              </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>length:</Text>
-                <Text style={styles.text}>{item.values[4]}</Text>
-              </View>
-              <View style={styles.cartDetail}>
-                <Text style={styles.textColor}>weight:</Text>
-                <Text style={styles.text}>{parseInt(item.values[5]).toFixed(2)}</Text>
-              </View>
+
             </View>
+
+
+
             <View style={styles.tabCartBottomContainer}>
               <TouchableOpacity onPress={() => this.editCartProduct(item)}>
                 <View style={styles.tabCartBottomImgView}>
@@ -1301,7 +1343,7 @@ class CartContainer extends Component {
   };
 
   render() {
-    const { cartData, wishlistData, isFetching, cartSummaryData, cartWeightData } = this.props;
+    const { cartData, wishlistData, isFetching, cartSummaryData, allParameterData, cartWeightData } = this.props;
     const {
       wishStateData,
       cartStateData,
@@ -1322,6 +1364,7 @@ class CartContainer extends Component {
 
     let url = urls.imageUrl + 'public/backend/product_images/zoom_image/';
 
+    let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -1368,9 +1411,7 @@ class CartContainer extends Component {
                   />
                 </TabHeading>
               }>
-              {wishlistData.length > 0 &&
-                !isFetching &&
-                this.favoriteDetail(wishlistData)}
+              {wishlistData.length > 0 && !isFetching && this.favoriteDetail(wishlistData)}
             </Tab>
           </Tabs>
 
@@ -1384,15 +1425,15 @@ class CartContainer extends Component {
               }}>
               <ActionButtonRounded
                 title="CART WEIGHT"
-                onButonPress={() =>
-                  this.setState({ isCartWeightSummeryVisible: true })
-                }
-                containerStyle={styles.buttonStyle}
+                onButonPress={() => this.setState({ isCartWeightSummeryVisible: true })}
+                // containerStyle={styles.buttonStyle}
+                color={headerTheme}
               />
               <ActionButtonRounded
                 title="PLACE ORDER"
                 onButonPress={() => this.placeOrderContinue()}
-                containerStyle={styles.buttonStyle}
+                // containerStyle={styles.buttonStyle}
+                color={headerTheme}
               />
             </View>
           ) : null}
@@ -1525,7 +1566,7 @@ class CartContainer extends Component {
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      backgroundColor: color.green
+                      backgroundColor: headerTheme ? '#' + headerTheme : '#303030',
                     }}>
                     <Text style={{ fontSize: 18, color: '#FFFFFF', marginLeft: 15 }}>
                       Edit Product
@@ -1627,7 +1668,7 @@ class CartContainer extends Component {
                       <ActionButtonRounded2
                         title="UPDATE"
                         onButonPress={() => this.updateCartProduct()}
-                        containerStyle={styles.buttonStyle}
+                        color={headerTheme}
                       />
                     ) : (
                         <ActivityIndicator size="small" color={color.brandColor} />
@@ -1758,8 +1799,8 @@ class CartContainer extends Component {
                               onPress={() => {
                                 this.showDateTimePicker();
                               }}>
-                              <Text style={{ color: !this.state.date ? null : '#a3a3a3', fontSize: 18, }}>
-                                {!this.state.date ? 'Date' : this.state.date}
+                              <Text style={{ color: '#a3a3a3', fontSize: 18, }}>
+                                {!this.state.date ? 'Select Date' : this.state.date}
                               </Text>
                             </TouchableOpacity>
                           </View>
@@ -1780,7 +1821,7 @@ class CartContainer extends Component {
                             <ActionButtonRounded
                               title="PLACE ORDER"
                               onButonPress={() => this.placeOrderFromCart()}
-                              containerStyle={styles.buttonStyle}
+                              color={headerTheme}
                             />
                           ) : (
                             <ActivityIndicator size="small" color={color.brandColor} />
@@ -1807,7 +1848,7 @@ class CartContainer extends Component {
                 <View style={styles.mainContainer}>
                   <TouchableWithoutFeedback style={{ flex: 1 }} onPress={() => null}>
                     <View>
-                      <View style={styles.alertContainer}>
+                      <View style={[styles.alertContainer, { backgroundColor: headerTheme ? '#' + headerTheme : '#303030', }]}>
                         <Image source={IconPack.RATE} style={styles.alertIcon} />
                         <Text style={styles.alertText}>Alert !</Text>
                       </View>
@@ -1839,7 +1880,7 @@ class CartContainer extends Component {
                           <ActionButtonRounded
                             title="CONTINUE"
                             onButonPress={() => this.placeOrderView()}
-                            containerStyle={styles.buttonStyle}
+                            color={headerTheme}
                           />
                         </View>
                       </View>
@@ -1866,7 +1907,7 @@ class CartContainer extends Component {
               <View style={styles.mainContainer}>
                 <TouchableWithoutFeedback style={{ flex: 1 }} onPress={() => null}>
                   <View>
-                    <View style={styles.alertContainer}>
+                    <View style={[styles.alertContainer, { backgroundColor: headerTheme ? '#' + headerTheme : '#303030', }]}>
                       <Image source={IconPack.RATE} style={styles.alertIcon} />
                       <Text style={styles.alertText}>Alert !</Text>
                     </View>
@@ -1886,7 +1927,7 @@ class CartContainer extends Component {
                         <ActionButtonRounded
                           title="CONTINUE"
                           onButonPress={() => this.deleteAllProduct()}
-                          containerStyle={styles.buttonStyle}
+                          color={headerTheme}
                         />
                       </View>
                     </View>
@@ -1917,7 +1958,7 @@ class CartContainer extends Component {
             }}>
             <>
               <View style={styles.flex}>
-                <View style={styles.cartSummaryContainer}>
+                <View style={[styles.cartSummaryContainer, { backgroundColor: headerTheme ? '#' + headerTheme : '#303030', }]}>
                   <Text style={[styles.alertText, { marginLeft: 20 }]}>
                     Cart Summary
                 </Text>
@@ -1987,7 +2028,7 @@ class CartContainer extends Component {
                     <ActionButtonRounded
                       title="OK"
                       onButonPress={() => this.closeSummeryModal()}
-                      containerStyle={styles.buttonStyle}
+                      color={headerTheme}
                     />
                   </View>
                 </View>
@@ -2017,7 +2058,6 @@ const styles = StyleSheet.create({
     top: 14,
     right: 15,
     bottom: 0,
-
   },
   buttonContainer: {
     justifyContent: 'flex-end',
@@ -2159,8 +2199,10 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   tabCartMiddleContainer: {
-    marginTop: 10,
-    // marginHorizontal: 18,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 18,
+    marginBottom: 10,
   },
   cartDetail: {
     flexDirection: 'row',
@@ -2267,6 +2309,10 @@ function mapStateToProps(state) {
     successCartWeightVersion: state.cartContainerReducer.successCartWeightVersion,
     errorCartWeightVersion: state.cartContainerReducer.errorCartWeightVersion,
     cartWeightData: state.cartContainerReducer.cartWeightData,
+
+    allParameterData: state.homePageReducer.allParameterData,
+    successAllParameterVersion: state.homePageReducer.successAllParameterVersion,
+    errorAllParamaterVersion: state.homePageReducer.errorAllParamaterVersion,
 
   };
 }

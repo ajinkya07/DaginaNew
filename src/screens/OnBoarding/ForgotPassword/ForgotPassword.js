@@ -40,6 +40,7 @@ import {
   validateUserName,
 } from '@values/validate';
 import AsyncStorage from '@react-native-community/async-storage';
+import { strings } from '@values/strings'
 
 
 
@@ -208,13 +209,13 @@ class ForgotPassword extends React.Component {
                         textAlign: 'center', letterSpacing: 10,
                         fontSize: 28, color: '#FFFFFF',
                       }}>
-                        DAGINA
+                        {strings.appName}
                       </Text>
                       <Text style={{
                         fontFamily: 'Lato-Regular', letterSpacing: 3,
                         fontSize: 20, color: '#FFFFFF', textAlign: 'center'
                       }}>
-                        JEWELLERS
+                        {strings.appSubName}
                       </Text>
 
                     </View>

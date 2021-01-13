@@ -9,6 +9,7 @@ import {
 import { Header, Left, Body, Right, Button, Title } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Theme } from '@values/Theme';
+import { strings } from '@values/strings';
 
 class _Header extends Component {
   constructor(props) {
@@ -33,11 +34,11 @@ class _Header extends Component {
       <Header
         style={{
           width: wp(100),
-          height: hp(7.5),
-          paddingVertical: Platform.OS === 'ios' ? hp(2) : 2,
+          height: hp(7),
+          paddingVertical: Platform.OS === 'ios' ? hp(2) : 0,
           backgroundColor: headerColor ? '#' + headerColor : '#fff',
         }}>
-        <Left style={{ marginLeft: hp(1), width: wp(30) }}>
+        <Left >
           <Button transparent>
             {showBack ? (
               <Image
@@ -45,36 +46,32 @@ class _Header extends Component {
                 source={require('../../assets/image/Account/back_button.png')}
               />
             ) : (
-                <View style={{
-                  flexDirection: 'row', marginTop: 2,
-                  justifyContent: 'space-around',
-                  width: wp(30)
-                }}>
+                <View style={{ marginLeft: -5, flexDirection: 'row', marginTop: 2, alignItems: 'center' }}>
 
                   <Image
                     source={require('../../assets/image/HomeIcon.png')}
-                    style={{ height: hp(5.5), width: wp(16), left: -20 }}
+                    style={{ height: hp(5.3), width: hp(5.3), }}
                     resizeMode={'contain'}
                   />
-                  <View style={{ flexDirection: 'column', top: -3 }}>
+                  <View style={{ flexDirection: 'column', marginLeft: 10 }}>
                     <Text
                       style={{
                         fontFamily: 'Lato-Bold',
                         color: '#FFFFFF',
-                        fontSize: hp(2.5),
+                        fontSize: hp(2.4),
                         letterSpacing: 2,
                       }}>
-                      DAGINA
-                </Text>
+                      {strings.appName}
+                    </Text>
                     <Text
                       style={{
                         fontFamily: 'Lato-Bold',
                         color: '#000000',
-                        fontSize: hp(2),
+                        fontSize: hp(1.8),
                         letterSpacing: 1,
                       }}>
-                      JEWELLERS
-                </Text>
+                      {strings.appSubName}
+                    </Text>
                   </View>
 
                 </View>

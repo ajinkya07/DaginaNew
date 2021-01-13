@@ -258,7 +258,7 @@ class ProductDetails extends React.Component {
 
   renderScreen = (data, k) => {
     const { productDetailsStateData } = this.state;
-    let url2 = urls.imageUrl + (productDetailsStateData !== undefined && productDetailsStateData.thumb_image);
+    let url2 = urls.imageUrl + (productDetailsStateData !== undefined && productDetailsStateData.zoom_image);
 
     let bannerUrl = urls.imageUrl + (productDetailsStateData !== undefined && productDetailsStateData.zoom_image);
 
@@ -273,11 +273,10 @@ class ProductDetails extends React.Component {
         <View key={k}>
           <Image
             source={{ uri: url2 + data }}
-            resizeMode='stretch'
+            resizeMode='contain'
             style={{ height: hp(33), width: wp(100) }}
             defaultSource={IconPack.APP_LOGO}
           />
-
         </View>
       </TouchableOpacity>
     );
@@ -502,11 +501,14 @@ class ProductDetails extends React.Component {
     });
 
     const { productDetailsStateData, weight, weightArray } = this.state;
+    const { allParameterData } = this.props
 
     let url =
       urls.imageUrl +
       (productDetailsStateData !== undefined &&
         productDetailsStateData.zoom_image);
+
+    let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
 
 
     return (
@@ -530,10 +532,20 @@ class ProductDetails extends React.Component {
                     }}
                   />
                 </TouchableOpacity>
-                <Animated.Text
-                  style={[styles.headerTextStyle, { color: '#303030', opacity: headerOpacity }]}>
+
+                <Text numberOfLines={1}
+                  style={[styles.headerTextStyle, { width: wp(60), color: '#303030', }]}>
                   {productDetailsStateData.product_name}
-                </Animated.Text>
+                </Text>
+
+                <TouchableOpacity
+                  hitSlop={{ top: 15, left: 15, right: 20, bottom: 15 }}
+                  onPress={() => this.props.navigation.navigate('CartContainer', { fromProductGrid: true })}>
+                  <Image
+                    source={require('../../assets/image/cART.png')}
+                    style={styles.ImageStyle}
+                  />
+                </TouchableOpacity>
               </View>
             </Header>
 
@@ -548,11 +560,14 @@ class ProductDetails extends React.Component {
               <SafeAreaView style={styles.safeAreaViewStyle} >
                 <View style={{ flex: 1 }}>
                   <View>
-
                     {this.carausalView(productDetailsStateData)}
                   </View>
 
-                  <View style={styles.mainContainerStyle}>
+                  <View style={{
+                    backgroundColor: headerTheme ? '#' + headerTheme : '#D7D7D7',
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
+                  }}>
                     <View style={styles.topTitleContainer}>
                       <View style={{ width: wp(73) }}>
                         <Text
@@ -560,6 +575,7 @@ class ProductDetails extends React.Component {
                             color: '#fff',
                             ...Theme.ffLatoRegular18,
                             letterSpacing: 0.8,
+                            marginLeft: 10
                           }}>
                           {productDetailsStateData.product_name}
                         </Text>
@@ -571,16 +587,16 @@ class ProductDetails extends React.Component {
                         }}>
                         {productDetailsStateData.in_wishlist > 0 && (
                           <Image
-                            source={require('../../assets/image/Heart.png')}
+                            source={require('../../assets/like.png')}
                             style={styles.ImageStyle}
                           />
                         )}
-                        {productDetailsStateData.in_cart > 0 && (
+                        {/* {productDetailsStateData.in_cart > 0 && (
                           <Image
-                            source={require('../../assets/image/cART.png')}
+                            source={require('../../assets/shopping-cart.png')}
                             style={styles.ImageStyle}
                           />
-                        )}
+                        )} */}
                       </View>
                     </View>
 
@@ -588,7 +604,7 @@ class ProductDetails extends React.Component {
                     <View style={styles.quantityContainer}>
                       <View>
                         <Text
-                          style={{ ...Theme.ffLatoRegular16, color: '#000000' }}>
+                          style={{ ...Theme.ffLatoRegular16, color: color.white }}>
                           Quantity
                         </Text>
                       </View>
@@ -596,7 +612,7 @@ class ProductDetails extends React.Component {
                         <TouchableOpacity
                           onPress={() => this._decrementCount()}>
                           <Image
-                            source={IconPack.BLUE_MINUS}
+                            source={require('../../assets/minus-2.png')}
                             style={styles.decrementCount}
                           />
                         </TouchableOpacity>
@@ -610,7 +626,7 @@ class ProductDetails extends React.Component {
                         <TouchableOpacity
                           onPress={() => this._incrementCount()}>
                           <Image
-                            source={IconPack.BLUE_PLUS}
+                            source={require('../../assets/add.png')}
                             style={styles.incrementCountIcon}
                           />
                         </TouchableOpacity>
@@ -618,16 +634,16 @@ class ProductDetails extends React.Component {
                     </View>
 
                     <View style={styles.remarkContainer}>
-                      <Image
+                      {/* <Image
                         source={IconPack.REMARK}
                         style={styles.remarkIcon}
-                      />
+                      /> */}
                       <TextInput
                         style={styles.remarksInput}
                         onChangeText={remark => this.setState({ remark })}
                         value={String(this.state.remark)}
                         placeholder="Remarks"
-                        placeholderTextColor="#000000"
+                        placeholderTextColor={color.white}
                         returnKeyType={'done'}
                       />
                     </View>
@@ -781,7 +797,7 @@ class ProductDetails extends React.Component {
 
                       <View
                         style={{
-                          backgroundColor: color.green,
+                          backgroundColor: headerTheme ? '#' + headerTheme : '#303030',
                           height: hp(6),
                           borderTopLeftRadius: 18,
                           borderTopRightRadius: 18,
@@ -833,6 +849,7 @@ class ProductDetails extends React.Component {
                 </View>
               </SafeAreaView>
             </AnimatedContent>
+
           </Container>
         ) : (
             this.renderLoader()
@@ -867,17 +884,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between'
+
   },
 
   headerTextStyle: {
-    //color: color.brandColor,
-    //fontSize: 21,
     color: '#19af81',
     fontSize: hp(2.6),
     fontFamily: 'Lato-Bold',
     letterSpacing: 1,
-    //top: 3,
-    marginLeft: 12,
+    textAlign: 'center'
   },
   mainContainerStyle: {
     backgroundColor: '#19af81',
@@ -921,13 +937,14 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   countTextInput: {
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0.8,
+    borderBottomColor: '#d7d7d7',
     height: 50,
     marginHorizontal: 10,
     width: wp(30),
     textAlign: 'center',
-    fontSize: 22,
-    color: color.brandColor,
+    fontSize: 25,
+    color: color.white
   },
   incrementCountIcon: {
     width: hp(4),
@@ -936,7 +953,7 @@ const styles = StyleSheet.create({
   },
   remarkContainer: {
     flexDirection: 'row',
-    marginHorizontal: 20,
+    marginRight: 10,
     alignItems: 'center',
     height: hp(9),
   },
@@ -950,9 +967,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.8,
     height: 40,
     marginHorizontal: 15,
-    width: wp(78),
+    width: wp(92),
     ...Theme.ffLatoRegular16,
-    color: '#000000',
+    color: color.white,
     borderBottomColor: '#d7d7d7',
   },
   descriptionContainer: {

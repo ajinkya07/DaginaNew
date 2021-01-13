@@ -397,6 +397,10 @@ class Customizable extends Component {
   render() {
     const { isDateTimePickerVisible } = this.state;
 
+    const { allParameterData } = this.props
+
+    let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
+
     return (
       <SafeAreaView style={{ flex: 1 }}>
 
@@ -619,7 +623,7 @@ class Customizable extends Component {
               height: 44,
               justifyContent: 'center',
               alignItems: 'center',
-              backgroundColor: color.green,
+              backgroundColor: headerTheme ? '#' + headerTheme : '#303030',
               borderTopLeftRadius: 16,
               borderTopRightRadius: 16,
             }}>

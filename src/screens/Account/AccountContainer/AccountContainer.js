@@ -155,7 +155,7 @@ class AccountContainer extends Component {
 
   showAppVersion = () => {
     Toast.show({
-      text: 'App version:  ' + version,
+      text: 'App version:  ' + '1.0.1',
       duration: 5000,
     });
   };
@@ -286,6 +286,7 @@ class AccountContainer extends Component {
     const facebook = allParameterData.facebook
     const catalog = allParameterData.catalogue
 
+    let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : ''
 
 
     return (
@@ -401,7 +402,7 @@ class AccountContainer extends Component {
                     <View style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      backgroundColor: color.green
+                      backgroundColor: headerTheme ? '#' + headerTheme : '#303030'
                     }}>
                       <Text style={{
                         color: '#FFFFFF',
@@ -489,7 +490,7 @@ class AccountContainer extends Component {
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      backgroundColor: color.green,
+                      backgroundColor: headerTheme ? '#' + headerTheme : '#303030',
                       borderTopLeftRadius: 10, borderTopRightRadius: 10
                     }}>
                     <Text
@@ -527,12 +528,8 @@ class AccountContainer extends Component {
                   <View style={styles.buttonContainer}>
                     <ActionButtonRounded
                       title="CANCEL"
-                      onButonPress={() =>
-                        this.setState({
-                          isCallModalVisible: false,
-                        })
-                      }
-                      containerStyle={styles.buttonStyle}
+                      onButonPress={() => this.setState({ isCallModalVisible: false, })}
+                      color={headerTheme}
                     />
                   </View>
                 </View>
@@ -554,7 +551,7 @@ class AccountContainer extends Component {
             <TouchableWithoutFeedback style={styles.flex}>
               <View style={styles.contain}>
 
-                <View style={styles.titleContainer}>
+                <View style={[styles.titleContainer, { backgroundColor: headerTheme ? '#' + headerTheme : '#303030' }]}>
                   <Text style={styles.titleText2}>Social Media</Text>
                   <TouchableOpacity
                     onPress={() => this.closeSocialMediaModal()}>
@@ -570,7 +567,7 @@ class AccountContainer extends Component {
                   <ActionButtonRounded
                     title="CANCEL"
                     onButonPress={() => this.closeSocialMediaModal()}
-                    containerStyle={styles.buttonStyle}
+                    color={headerTheme}
                   />
                 </View>
               </View>
@@ -789,17 +786,19 @@ const RowData = ({ title, onPress }) => {
 };
 
 
-const ActionButtonRounded = ({ title, onButonPress, containerStyle }) => {
+const ActionButtonRounded = ({ title, onButonPress, containerStyle, color }) => {
   return (
     <TouchableOpacity
       onPress={() => {
         onButonPress();
       }}>
-      <View
-        style={[
-          actionButtonRoundedStyle.mainContainerStyle,
-          containerStyle || null,
-        ]}>
+      <View style={{
+        backgroundColor: color ? '#' + color : '#303030',
+        height: hp(6),
+        width: wp(35),
+        justifyContent: 'center',
+        borderRadius: 45,
+      }}>
         <View style={actionButtonRoundedStyle.innerContainer}>
           <Text style={actionButtonRoundedStyle.titleStyle}>{title}</Text>
         </View>

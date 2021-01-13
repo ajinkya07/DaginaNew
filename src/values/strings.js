@@ -1,5 +1,6 @@
 export const strings = {
-  appName: 'Dagina',
+  appName: 'DAGINA',
+  appSubName: 'JEWELLERS',
   login: 'Log In',
   forgotPassText: 'Forgot Login Details?',
   forgotPassLink: 'Get Help',

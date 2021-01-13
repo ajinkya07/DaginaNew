@@ -39,6 +39,7 @@ import {
   validatePassword,
   validateUserName,
 } from '@values/validate';
+import { strings } from '@values/strings'
 
 
 const { width, height } = Dimensions.get('window');
@@ -257,14 +258,14 @@ class Register extends React.Component {
                       textAlign: 'center', letterSpacing: 10,
                       fontSize: 28, color: '#FFFFFF',
                     }}>
-                      DAGINA
-                      </Text>
+                      {strings.appName}
+                    </Text>
                     <Text style={{
                       fontFamily: 'Lato-Regular', letterSpacing: 3,
                       fontSize: 20, color: '#FFFFFF', textAlign: 'center'
                     }}>
-                      JEWELLERS
-                      </Text>
+                      {strings.appSubName}
+                    </Text>
                   </View>
                   <LoginFields
                     value={fullName ? fullName : null}
