@@ -46,7 +46,7 @@ class _Header extends Component {
                 source={require('../../assets/image/Account/back_button.png')}
               />
             ) : (
-                <View style={{ marginLeft: -5, flexDirection: 'row', marginTop: 2, alignItems: 'center' }}>
+                <View style={{ marginLeft: Platform.OS === 'ios' ? 0 : -5, flexDirection: 'row', marginTop: 2, alignItems: 'center' }}>
 
                   <Image
                     source={require('../../assets/image/HomeIcon.png')}
