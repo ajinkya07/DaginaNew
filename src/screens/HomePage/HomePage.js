@@ -11,6 +11,7 @@ import {
   Platform, FlatList,
   RefreshControl,
   TouchableWithoutFeedback,
+  ImageBackground
 } from 'react-native';
 import HomePageStyle from '@homepage/HomePageStyle';
 import { color } from '@values/colors';
@@ -631,144 +632,166 @@ class HomePage extends Component {
     );
   };
 
-  categoryViewDesignNew = (item, index) => {
 
+  categoryViewDesignNew = (item, index) => {
     let baseUrl = urls.imageUrl + 'public/backend/collection/';
 
     return (
-
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
 
         {index % 4 == 1 &&
-          <View style={{
-            backgroundColor: 'white',
-            height: hp(18),
-            marginVertical: hp(1), marginRight: hp(1)
-          }}>
-            <TouchableOpacity
-              onPress={() => this.getProductGridOrNot(item)}
+          <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
+            <View style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: hp(18),
+              marginVertical: hp(1),
+              marginRight: hp(1),
+            }}
             >
-              <Image
-                resizeMode={'cover'}
-                style={{ height: hp(18), width: wp(35) }}
-                defaultSource={IconPack.APP_LOGO}
-                source={{ uri: baseUrl + item.image_name }}
+              <View style={{
+                height: hp(18), width: wp(49),
+                backgroundColor: '#070000',
+                opacity: 0.20,
+                position: 'absolute',
+                borderRadius: 8,
+              }}
               />
-              <_Text
-                numberOfLines={2}
+              <ImageBackground
+                source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
+                imageStyle={{ borderRadius: 8 }}
+                resizeMode={item.image_name != '' ? 'cover' : 'contain'}
                 style={{
-                  ...Theme.ffLatoMedium18,
-                  position: 'absolute',
-                  color: '#000000',
-                  top: 10,
-                  left: 10,
-                }}>
-                {item.col_name}
-              </_Text>
-            </TouchableOpacity>
-          </View>
+                  height: hp(18), width: wp(49),
+                  resizeMode: 'center',
+                  opacity: 0.40,
+                }} />
+              <View style={{ position: 'absolute', width: wp(48), marginTop: 10, marginLeft: 10 }}>
+                <Text numberOfLines={1} style={{ textAlign: 'center', color: color.white, letterSpacing: 1.6, fontWeight: 'bold', fontSize: 22, }}>
+                  {item.col_name}
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
         }
 
         {index % 4 == 2 &&
           <View style={{
-            backgroundColor: 'white',
+            justifyContent: 'center',
+            alignItems: 'center',
             marginTop: -hp(19),
-            marginLeft: wp(36),
+            marginLeft: wp(50),
             height: hp(18),
-            width: wp(63),
-          }}>
-            <TouchableOpacity
-              onPress={() => this.getProductGridOrNot(item)}
-            >
-              <Image
-                resizeMode={'cover'}
-                style={{ height: hp(18), width: wp(63) }}
-                defaultSource={IconPack.APP_LOGO}
-                source={{ uri: baseUrl + item.image_name }}
+          }}
+          >
+            <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
+              <View style={{
+                height: hp(18), width: wp(49),
+                backgroundColor: '#070000',
+                opacity: 0.20,
+                position: 'absolute',
+                borderRadius: 8,
+              }}
               />
-              <_Text numberOfLines={2}
+              <ImageBackground
+                source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
+                imageStyle={{ borderRadius: 8 }}
+                resizeMode={item.image_name != '' ? 'cover' : 'contain'}
                 style={{
-                  ...Theme.ffLatoMedium18,
-                  position: 'absolute',
-                  top: 10,
-                  left: 10,
-                  color: '#000000',
-                  textAlign: 'center',
-                }}>
-                {item.col_name}
-              </_Text>
+                  height: hp(18), width: wp(49),
+                  resizeMode: 'center',
+                  opacity: 0.40,
+                }} />
+              <View style={{ position: 'absolute', width: wp(48), marginTop: hp(7), marginLeft: 10 }}>
+                <Text numberOfLines={1} style={{ textAlign: 'center', color: color.white, letterSpacing: 1.6, fontWeight: 'bold', fontSize: 22, }}>
+                  {item.col_name}
+                </Text>
+              </View>
+
             </TouchableOpacity>
+
           </View>
         }
 
+
         {index % 4 == 3 &&
-          <View style={{
-            backgroundColor: 'white',
-            height: hp(18), width: wp(63),
-            marginRight: hp(1)
-          }}>
-            <TouchableOpacity
-              onPress={() => this.getProductGridOrNot(item)}
-              activeOpacity={0.7}>
-              <Image
-                resizeMode={'cover'}
-                style={{ height: hp(18), width: wp(63) }}
-                defaultSource={IconPack.APP_LOGO}
-                source={{ uri: baseUrl + item.image_name }}
+          <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
+            <View style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: hp(18),
+              width: wp(49),
+              marginRight: hp(1),
+            }}
+            >
+              <View style={{
+                height: hp(18),
+                width: wp(49),
+                backgroundColor: '#070000',
+                opacity: 0.20, position: 'absolute',
+                borderRadius: 8,
+              }}
               />
-              <_Text
-                numberOfLines={2}
+              <ImageBackground
+                source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
+                imageStyle={{ borderRadius: 8 }}
+                resizeMode={item.image_name != '' ? 'cover' : 'contain'}
                 style={{
-                  ...Theme.ffLatoMedium18,
-                  position: 'absolute',
-                  color: '#000000',
-                  top: 10,
-                  left: 10,
-                }}>
-                {item.col_name}
-              </_Text>
-            </TouchableOpacity>
-          </View>
+                  height: hp(18), width: wp(49),
+                  resizeMode: 'center',
+                  opacity: 0.40,
+                }} />
+              <View style={{ position: 'absolute', width: wp(48), marginTop: 10, marginLeft: 10 }}>
+                <Text numberOfLines={1} style={{ textAlign: 'center', color: color.white, letterSpacing: 1.6, fontWeight: 'bold', fontSize: 22, }}>
+                  {item.col_name}
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
         }
 
         {index % 4 == 0 &&
           <View style={{
-            backgroundColor: 'white',
+            justifyContent: 'center',
+            alignItems: 'center',
             marginTop: -hp(18),
-            marginLeft: wp(64),
+            marginLeft: wp(50),
             height: hp(18),
-            width: wp(35),
-          }}>
-            <TouchableOpacity
-              onPress={() => this.getProductGridOrNot(item)}
-            >
-              <Image
-                resizeMode={'cover'}
-                style={{ height: hp(18), width: wp(35) }}
-                defaultSource={IconPack.APP_LOGO}
-                source={{ uri: baseUrl + item.image_name }}
-              />
-              <_Text
-                numberOfLines={2}
+            width: wp(49),
+          }}
+          >
+            <View style={{
+              height: hp(18),
+              width: wp(49),
+              backgroundColor: '#070000',
+              opacity: 0.20,
+              position: 'absolute',
+              borderRadius: 8,
+            }}
+            />
+            <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
+              <ImageBackground
+                source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
+                imageStyle={{ borderRadius: 8 }}
+                resizeMode={item.image_name != '' ? 'cover' : 'contain'}
                 style={{
-                  ...Theme.ffLatoMedium18,
-                  position: 'absolute',
-                  top: 10,
-                  left: 10,
-                  color: '#000000',
-                  textAlign: 'center',
-                }}>
-                {item.col_name}
-              </_Text>
+                  height: hp(18), width: wp(49),
+                  resizeMode: 'center',
+                  opacity: 0.40,
+                }} />
+              <View style={{ position: 'absolute', width: wp(48), marginTop: hp(7), marginLeft: 10 }}>
+                <Text numberOfLines={1} style={{ textAlign: 'center', color: color.white, letterSpacing: 1.6, fontWeight: 'bold', fontSize: 22, }}>
+                  {item.col_name}
+                </Text>
+              </View>
             </TouchableOpacity>
+
           </View>
         }
-
-
-
       </View>
     );
   };
+
 
   getProductDesigns = (item, index) => {
     const {
@@ -1108,7 +1131,7 @@ class HomePage extends Component {
           {/* CATEGORY DESIGNS */}
 
           {categoryData && categoryData.map((item) => (
-            <View style={{ top: -10 }}>
+            <View style={{ top: -10, left: 2 }}>
               { this.categoryViewDesignNew(item, item.position)}
             </View>
           ))}

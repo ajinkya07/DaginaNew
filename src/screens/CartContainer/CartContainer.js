@@ -780,7 +780,8 @@ class CartContainer extends Component {
     await this.props.getTotalCartCount(d);
   };
 
-  wishListView = data => {
+  // wishlist
+  wishListView = (data, index) => {
     const { isToggle, openMoreDetailsIdwish } = this.state;
 
     let baseurl = urls.imageUrl + data.zoom_image;
@@ -824,7 +825,7 @@ class CartContainer extends Component {
 
             <View style={styles.tabCartMiddleContainer}>
               <View style={{ flexDirection: 'column' }}>
-                {wishlistData[0].keys.map(
+                {wishlistData[index].keys.map(
                   (key, i) => {
                     return (
                       <Text
@@ -840,7 +841,7 @@ class CartContainer extends Component {
                 )}
               </View>
               <View style={{ flexDirection: 'column' }}>
-                {wishlistData[0].values.map(
+                {wishlistData[index].values.map(
                   (value, j) => {
                     return (
                       <Text
@@ -911,9 +912,9 @@ class CartContainer extends Component {
         refreshing={this.props.isFetching}
         onRefresh={() => this.scrollDownToRefreshWishList()}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View style={{ marginBottom: hp(1), marginTop: hp(1) }}>
-            {this.wishListView(item)}
+            {this.wishListView(item, index)}
           </View>
         )}
         keyExtractor={(item, index) => item.cart_wish_id.toString()}
@@ -1015,14 +1016,13 @@ class CartContainer extends Component {
 
   // cart view
 
-  cartView = item => {
+  cartView = (item, index) => {
 
     const { isToogleTwo, openMoreDetailsIdCart } = this.state;
 
     let baseurl2 = urls.imageUrl + item.zoom_image;
     const { cartData } = this.props
 
-    console.log("cartData=====", cartData);
     return (
       <TouchableOpacity onPress={() => this.setCartToggleView(item)}>
         <View style={styles.tabCartTopContainer}>
@@ -1061,7 +1061,7 @@ class CartContainer extends Component {
             <View style={styles.tabCartMiddleContainer}>
 
               <View style={{ flexDirection: 'column' }}>
-                {cartData[0].keys.map(
+                {cartData[index].keys.map(
                   (key, i) => {
                     return (
                       <Text
@@ -1077,7 +1077,7 @@ class CartContainer extends Component {
                 )}
               </View>
               <View style={{ flexDirection: 'column' }}>
-                {cartData[0].values.map(
+                {cartData[index].values.map(
                   (value, j) => {
                     return (
                       <Text
@@ -1206,9 +1206,9 @@ class CartContainer extends Component {
         refreshing={this.props.isFetching}
         onRefresh={() => this.scrollDownToRefreshCart()}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View style={{ marginBottom: hp(1), marginTop: hp(1), }}>
-            {this.cartView(item)}
+            {this.cartView(item, index)}
           </View>
         )}
         keyExtractor={(item, index) => item.cart_wish_id.toString()}
